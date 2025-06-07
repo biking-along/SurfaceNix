@@ -18,16 +18,14 @@
           system.extraSystemBuilderCmds = ''
             ln -s ${self} $out/flake
             ln -s ${self.nixosConfigurations.kappa.config.boot.kernelPackages.kernel.dev} $out/kernel-dev
+            ln -s ./override.edid $out/lib/firmware/edid/SP8vrr120
           '';
         }
 
-        # This here adds the current nixpkgs to the global flake registry
-        # such that nix build nixpkgs#... refers to the pinned version.
         {
           nix.registry.nixpkgs.flake = nixpkgs;
         }
-        # nix develop /nix/store/v9vnzqrpfx4qpn4zygcyg1bbw9b54m92-source#nixosConfigurations.kappa.pkgs.iptsd
-        # And this one here adds 'current' that has all the os specific overrides.
+
         {
           nix.registry.current.to = {
             type = "path";
@@ -37,7 +35,6 @@
       ];
     };
 
-    # Custom recovery image that has this repo embedded in it, for easy debugging.
     # nix build .#nixosConfigurations.recovery.config.system.build.isoImage
     nixosConfigurations.recovery = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -45,17 +42,12 @@
         ./configuration-base.nix
         nixos-hardware.nixosModules.microsoft-surface-pro-intel
 
-        # "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
         "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
         ({ pkgs, ... }: { environment.systemPackages = [ pkgs.vim ]; })
 
         {
-          # Faster but larger squashfs, significant change in speed.
           isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 
-          # Drop zfs support from the kernel to avoid a kernel rebuild.
-          # Why do we need to comment this out to prevent rebuilding a kernel with zfs
-          # as compared to my default config? That doesn't have to do this?
           boot.supportedFilesystems = nixpkgs.lib.mkForce [
             "btrfs"
             "ext4"
@@ -67,8 +59,6 @@
           ];
         }
 
-        # This here adds the current nixpkgs to the global flake registry
-        # such that nix build nixpkgs#... refers to the pinned version.
         {
           nix.registry.nixpkgs.flake = nixpkgs;
           nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -86,12 +76,9 @@
         })
       ];
     };
-    #inherit nixpkgs;
 
-    # Such that we can do current#pkgs.<our overlayd nixpkgs>
     pkgs = nixosConfigurations.kappa.pkgs;
 
-    # Allow formatting with `nix fmt`
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
   };
 }
