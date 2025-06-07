@@ -1,3 +1,3 @@
-export PATH ="$coreutils/bin:$gawk/bin"
+#!/bin/bash
 
-base64 < $src | awk '{printf $0}' | base64 -d > "./SP8vrr120.bin"
+base64 < override.edid | base64 -d > "./SP8vrr120.bin"
