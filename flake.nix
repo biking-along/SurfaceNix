@@ -12,8 +12,6 @@
         ./configuration.nix
         nixos-hardware.nixosModules.microsoft-surface-pro-intel
 
-        # From https://blog.thalheim.io/2022/12/17/hacking-on-kernel-modules-in-nixos/ this adds
-        # the flake to /run/booted-system/
         {
           system.extraSystemBuilderCmds = ''
             ln -s ${self} $out/flake
