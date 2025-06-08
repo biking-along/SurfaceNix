@@ -16,7 +16,6 @@
           system.extraSystemBuilderCmds = ''
             ln -s ${self} $out/flake
             ln -s ${self.nixosConfigurations.kappa.config.boot.kernelPackages.kernel.dev} $out/kernel-dev
-            ln -s ./override.edid $out/lib/firmware/edid/SP8vrr120
           '';
         }
 
