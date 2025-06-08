@@ -61,12 +61,10 @@
 
     services.gnome.core-apps.enable = false;
 
-    services.usbmuxd.enable = true; # For mounting ios devices.
-
     # well, that (utilities false) still pulls in orca, with speech synthesis, for many megabytes.
     # https://github.com/NixOS/nixpkgs/blob/4ecab3273592f27479a583fb6d975d4aba3486fe/nixos/modules/services/x11/desktop-managers/gnome.nix#L459
     # https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
-    environment.gnome.excludePackages = (with pkgs; [
+    environment.gnome.excludePackages = with pkgs; [
       baobab # disk usage analyzer
       epiphany # web browser
       gedit # text editor
@@ -86,11 +84,12 @@
       gnome-music
       gnome-screenshot
       gnome-weather
-      pkgs.gnome-connections
-    ]) ++ (with pkgs; [ orca ]);
+      gnome-connections
+      orca
+    ];
 
     # We also lose nautilus now though, so we add back stuff we actually care about...
-    environment.systemPackages = (with pkgs; [
+    environment.systemPackages = with pkgs; [
       eog # image viewer
       evince # document viewer
       file-roller # archive manager
@@ -98,8 +97,6 @@
       gnome-system-monitor
       gnome-disk-utility
       nautilus
-      gvfs # for mounting ios devices.
-    ]) ++ (with pkgs; [
       vlc
       mplayer
       scite
@@ -108,9 +105,6 @@
       xorg.xwininfo
       thunderbird
       firefox
-      # For mounting ios devices:
-      libimobiledevice
-      ifuse # optional, to mount using 'ifuse'
-    ]);
+    ];
   };
 }
