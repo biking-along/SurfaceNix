@@ -19,9 +19,7 @@
           '';
         }
 
-        {
-          nix.registry.nixpkgs.flake = nixpkgs;
-        }
+        { nix.registry.nixpkgs.flake = nixpkgs; }
 
         {
           nix.registry.current.to = {
