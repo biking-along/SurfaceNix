@@ -35,11 +35,6 @@
   #   useXkbConfig = true; # use xkbOptions in tty.
   # };
 
-  fileSystems = {
-    "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
-  };
   boot.tmp.cleanOnBoot = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -55,7 +50,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
-    vim
+    neovim
     gawk
     wget
     iftop
