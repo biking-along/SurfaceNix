@@ -94,7 +94,6 @@
       eog # image viewer
       evince # document viewer
       file-roller # archive manager
-      gnome-terminal
       gnome-system-monitor
       gnome-disk-utility
       nautilus
