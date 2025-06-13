@@ -11,9 +11,9 @@
   nixpkgs.overlays = [ (import ./overlay-osk.nix) ];
 
   imports = [
-  ./module-desktop.nix
-  ./hardware-configuration.nix
-  ./cachix.nix
+    ./module-desktop.nix
+    ./hardware-configuration.nix
+    ./cachix.nix
   ];
 
   # enable core dumps.
