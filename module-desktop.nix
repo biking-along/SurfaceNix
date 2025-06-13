@@ -12,7 +12,13 @@
   config = {
 
     # Surface related stuff.
-    services.iptsd.enable = true;
+    services.iptsd = {
+      enable = true;
+      config = {
+        Touch.DisableOnPalm = true;
+        Touch.DisableOnStylus = true;
+      };
+    };
 
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;
