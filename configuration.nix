@@ -45,10 +45,11 @@
   users.users.rw = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    #packages = with pkgs; [
-    # vim
-    # tree
-    #];
+    shell = pkgs.fish;
+  };
+
+  programs.fish = {
+    enable = true;
   };
 
   # List packages installed in system profile. To search, run:
