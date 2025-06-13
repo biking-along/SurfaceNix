@@ -15,8 +15,8 @@
     services.iptsd = {
       enable = true;
       config = {
-        Touch.DisableOnPalm = true;
-        Touch.DisableOnStylus = true;
+        Touchscreen.DisableOnPalm = true;
+        Touchscreen.DisableOnStylus = true;
       };
     };
 
