@@ -65,7 +65,7 @@
     binutils
     coreutils
     git
-    kitty
+    ghostty
   ]);
 
   hardware.display.edid.packages = [
