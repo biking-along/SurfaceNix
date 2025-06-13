@@ -85,6 +85,7 @@
       gnome-screenshot
       gnome-weather
       gnome-connections
+      gnome-tour
       orca
     ];
 
@@ -98,13 +99,12 @@
       gnome-disk-utility
       nautilus
       vlc
-      mplayer
-      scite
-      chromium
       gimp
       xorg.xwininfo
       thunderbird
       firefox
     ];
+
+    services.xserver.excludePackages = [ pkgs.xterm ];
   };
 }

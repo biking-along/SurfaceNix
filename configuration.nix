@@ -10,7 +10,11 @@
 
   nixpkgs.overlays = [ (import ./overlay-osk.nix) ];
 
-  imports = [ ./module-desktop.nix ./hardware-configuration.nix ];
+  imports = [
+  ./module-desktop.nix
+  ./hardware-configuration.nix
+  ./cachix.nix
+  ];
 
   # enable core dumps.
   systemd.coredump.enable = true;
@@ -61,6 +65,7 @@
     binutils
     coreutils
     git
+    kitty
   ]);
 
   hardware.display.edid.packages = [
