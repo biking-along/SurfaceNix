@@ -54,6 +54,15 @@
     '';
   };
 
+  programs.nh = {
+    enable = true;
+    clean ={
+      enable = true;
+      extraArgs = "--keep 5 --keep-since 3d";
+    };
+    flake = "/home/rw/NixOS/SurfaceNix/";
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
