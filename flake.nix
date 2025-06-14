@@ -8,8 +8,8 @@
     nixosConfigurations.kappa = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration-base.nix
-        ./configuration.nix
+        ./hosts/kappa/configuration-base.nix
+        ./hosts/kappa/configuration.nix
         nixos-hardware.nixosModules.microsoft-surface-pro-intel
 
         {
@@ -34,7 +34,7 @@
     nixosConfigurations.surfaceRecovery = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration-base.nix
+        ./hosts/kappa/configuration-base.nix
         nixos-hardware.nixosModules.microsoft-surface-pro-intel
 
         "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
