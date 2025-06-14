@@ -48,6 +48,10 @@
 
   programs.fish = {
     enable = true;
+    useBabelFish = true;
+    interactiveShellInit = ''
+      microfetch
+    '';
   };
 
   # List packages installed in system profile. To search, run:
@@ -65,6 +69,7 @@
     coreutils
     git
     ghostty
+    microfetch
   ]);
 
   hardware.display.edid.packages = [
