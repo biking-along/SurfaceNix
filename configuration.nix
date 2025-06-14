@@ -48,7 +48,7 @@
 
   programs.fish = {
     enable = true;
-    useBabelFish = true;
+    useBabelfish = true;
     interactiveShellInit = ''
       microfetch
     '';
