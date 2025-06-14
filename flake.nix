@@ -30,8 +30,8 @@
       ];
     };
 
-    # nix build .#nixosConfigurations.recovery.config.system.build.isoImage
-    nixosConfigurations.recovery = nixpkgs.lib.nixosSystem {
+    # nix build .#nixosConfigurations.surfaceRecovery.config.system.build.isoImage
+    nixosConfigurations.surfaceRecovery = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./configuration-base.nix
@@ -50,7 +50,6 @@
             "ntfs"
             "vfat"
             "xfs"
-            #"zfs"
           ];
         }
 
