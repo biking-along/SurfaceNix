@@ -41,9 +41,9 @@
 
   # Pick only one of the below networking options.
   networking.wireless.enable =
-    false; # Enables wireless support via wpa_supplicant.
+    lib.mkDefault true; # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable =
-    true; # Easiest to use and most distros use this by default.
+    lib.mkDefault false; # Easiest to use and most distros use this by default.
 
   hardware.microsoft-surface.kernelVersion = "stable";
 
