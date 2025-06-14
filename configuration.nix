@@ -7,6 +7,7 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.trusted-users = [ "rw" ];
+  nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [ (import ./overlay-osk.nix) ];
 
