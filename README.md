@@ -2,8 +2,7 @@
 
 In progress NixOS config for my Surface Pro 8. Forked from [IWander's](https://github.com/iwanders/nixos-surface) Surface Pro 9 config.
 
-Hostname for my system is [papyrus](https://en.wikipedia.org/wiki/Papyrus), so that will pop up in
-random commands.
+Hostname for my system is kappa, so that will pop up in random commands.
 
 ## Useful links;
 
