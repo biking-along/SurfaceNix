@@ -57,7 +57,13 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
-    neovim-unwrapped
+    neovim
+    # Hide neovim wrapper desktop entry
+    (lib.hiPrio (pkgs.runCommand "nvim.desktop-hide" { } ''
+      mkdir -p "$out/share/applications"
+      cat "${config.programs.neovim.package}/share/applications/nvim.desktop" > "$out/share/applications/nvim.desktop"
+      echo "Hidden=1" >> "$out/share/applications/nvim.desktop"
+    ''))
     gawk
     wget
     iftop
@@ -70,7 +76,10 @@
     git
     ghostty
     microfetch
+    bitwarden-desktop
   ]);
+
+
 
   hardware.display.edid.packages = [
     (pkgs.runCommand "edid-custom" { } ''
