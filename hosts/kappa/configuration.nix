@@ -99,6 +99,7 @@
     ghostty
     microfetch
     bitwarden-desktop
+    jellyfin-media-player
   ]);
 
 
