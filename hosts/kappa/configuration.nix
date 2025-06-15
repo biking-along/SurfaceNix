@@ -12,9 +12,10 @@
   nixpkgs.overlays = [ (import ../../modules/gnome/overlay-osk.nix) ];
 
   imports = [
-    ../../modules/gnome/gnome.nix
     ./hardware-configuration.nix
+    ../../modules/gnome/gnome.nix
     ../../modules/cachix/cachix.nix
+    ../../modules/envVars.nix
   ];
 
   # enable core dumps.
@@ -56,11 +57,25 @@
 
   programs.nh = {
     enable = true;
-    clean ={
+    clean = {
       enable = true;
       extraArgs = "--keep 5 --keep-since 3d";
     };
     flake = "/home/rw/NixOS/SurfaceNix/";
+  };
+
+  programs.git = {
+    enable = true;
+    prompt.enable = true;
+    config = {
+      user = {
+        email = "bikingalong@pm.me";
+	name = "bikingalong"
+      };
+      core = {
+        editor = "nvim";
+      };
+    };
   };
 
   # List packages installed in system profile. To search, run:
@@ -82,7 +97,6 @@
     file
     binutils
     coreutils
-    git
     ghostty
     microfetch
     bitwarden-desktop
