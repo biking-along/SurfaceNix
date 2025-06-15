@@ -37,7 +37,6 @@
     "surface_battery"
     "surface_charger"
     "surface_aggregator_cdev"
-    "surface_gpe"
   ];
 
   # Pick only one of the below networking options.
@@ -50,7 +49,7 @@
 
   # Disable the problematic suspend kernel module, it makes waking up
   # impossible after closing the cover.
-  boot.blacklistedKernelModules = [];
+  boot.blacklistedKernelModules = [ "surface_gpe" ];
 
 }
 

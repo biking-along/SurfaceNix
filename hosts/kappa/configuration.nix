@@ -66,7 +66,6 @@
 
   programs.git = {
     enable = true;
-    prompt.enable = true;
     config = {
       user = {
         email = "bikingalong@pm.me";
