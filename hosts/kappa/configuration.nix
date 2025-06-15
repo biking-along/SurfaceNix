@@ -70,7 +70,7 @@
     config = {
       user = {
         email = "bikingalong@pm.me";
-	name = "bikingalong"
+	name = "bikingalong";
       };
       core = {
         editor = "nvim";
