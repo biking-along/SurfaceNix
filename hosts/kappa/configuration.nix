@@ -17,8 +17,6 @@
 
   systemd.coredump.enable = true;
 
-  boot.plymouth.enable = true;
-
   networking.hostName = "kappa";
 
   # Set your time zone.
