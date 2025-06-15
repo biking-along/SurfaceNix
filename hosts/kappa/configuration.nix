@@ -9,13 +9,13 @@
   nix.settings.trusted-users = [ "rw" ];
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [ (import ../../modules/gnome/overlay-osk.nix) ];
+  nixpkgs.overlays = [ (import ../../modules/kappa/gnome/overlay-osk.nix) ];
 
   imports = [
     ./hardware-configuration.nix
-    ../../modules/gnome/gnome.nix
-    ../../modules/cachix/cachix.nix
-    ../../modules/envVars.nix
+    ../../modules/kappa/gnome/gnome.nix
+    ../../modules/kappa/cachix/cachix.nix
+    ../../modules/kappa/envVars.nix
   ];
 
   # enable core dumps.
