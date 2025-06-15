@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running `nixos-help`).
-
 { config, pkgs, lib, ... }:
 
 {
@@ -29,10 +25,9 @@
   boot.tmp.cleanOnBoot = true;
   hardware.enableAllFirmware = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rw = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ];
     shell = pkgs.fish;
   };
 
@@ -84,8 +79,6 @@
     youtube-music
   ]);
 
-
-
   hardware.display.edid.packages = [
     (pkgs.runCommand "edid-custom" { } ''
       mkdir -p "$out/lib/firmware/edid"
@@ -99,6 +92,7 @@
     '')
   ];
 
+  # Declare both to override base config for iso
   networking.wireless.enable = false;
   networking.networkmanager.enable = true;
 

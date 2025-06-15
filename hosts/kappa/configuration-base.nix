@@ -1,26 +1,17 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running `nixos-help`).
-
 { config, lib, pkgs, ... }:
 
 {
-
   imports = [ ../../modules/kappa/thermald/module-thermald.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  # Boot kernel parameters:
+
   boot.kernelParams = [
-    # Mitigate screen flickering, see:
-    # https://wiki.archlinux.org/title/intel_graphics#Screen_flickering
-    # https://github.com/linux-surface/linux-surface/issues/862
+    # Mitigate screen flickering
     "i915.enable_psr=0"
   ];
-  # Add the kernel modules such that we have a working keyboard for the 
-  # LUKS full disk encryption.
-  # https://github.com/linux-surface/linux-surface/wiki/Disk-Encryption
+
   boot.initrd.kernelModules = [
     "surface_aggregator"
     "surface_aggregator_registry"
@@ -39,17 +30,13 @@
     "surface_aggregator_cdev"
   ];
 
-  # Pick only one of the below networking options.
-  networking.wireless.enable =
-    lib.mkDefault true; # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable =
-    lib.mkDefault false; # Easiest to use and most distros use this by default.
+  # Use wpa_supplicant in iso but not for full install
+  networking.wireless.enable = lib.mkDefault true;
+  networking.networkmanager.enable = lib.mkDefault false;
 
   hardware.microsoft-surface.kernelVersion = "stable";
 
   # Disable the problematic suspend kernel module, it makes waking up
   # impossible after closing the cover.
   boot.blacklistedKernelModules = [ "surface_gpe" ];
-
 }
-
