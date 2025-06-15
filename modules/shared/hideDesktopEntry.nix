@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }: 
 
 {
+  documentation.nixos.enable = false;
   environment.systemPackages = with pkgs; [
 
     # Hide Neovim desktop entry

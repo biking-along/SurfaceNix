@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-
   imports = [
     ./hardware-configuration.nix
     ../../modules/kappa/gnome/gnome.nix
@@ -17,9 +16,6 @@
 
   systemd.coredump.enable = true;
 
-  networking.hostName = "kappa";
-
-  # Set your time zone.
   time.timeZone = "America/Chicago";
 
   boot.tmp.cleanOnBoot = true;
@@ -40,12 +36,12 @@
   };
 
   # Declare both to override base config for iso
-  networking.wireless.enable = false;
-  networking.networkmanager.enable = true;
-
-  documentation.nixos.enable = false;
+  networking = {
+    hostName = "kappa";
+    wireless.enable = false;
+    networkmanager.enable = true;
+  };
 
   system.stateVersion = "25.11";
-
 }
 
