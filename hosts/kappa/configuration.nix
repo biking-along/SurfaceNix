@@ -1,18 +1,16 @@
 { config, pkgs, lib, ... }:
 
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.settings.trusted-users = [ "rw" ];
-  nixpkgs.config.allowUnfree = true;
-
-  nixpkgs.overlays = [ (import ../../modules/kappa/gnome/overlay-osk.nix) ];
 
   imports = [
     ./hardware-configuration.nix
     ../../modules/kappa/gnome/gnome.nix
     ../../modules/kappa/cachix/cachix.nix
     ../../modules/kappa/envVars.nix
+    ../../modules/kappa/sp8Edid.nix
+    ../../modules/kappa/nix.nix
     ../../modules/shared/hideDesktopEntry.nix
+    ../../modules/shared/nh.nix
   ];
 
   systemd.coredump.enable = true;
@@ -37,15 +35,6 @@
     interactiveShellInit = ''
       microfetch
     '';
-  };
-
-  programs.nh = {
-    enable = true;
-    clean = {
-      enable = true;
-      extraArgs = "--keep 5 --keep-since 3d";
-    };
-    flake = "/home/rw/NixOS/SurfaceNix/";
   };
 
   programs.git = {
@@ -78,19 +67,6 @@
     jellyfin-media-player
     youtube-music
   ]);
-
-  hardware.display.edid.packages = [
-    (pkgs.runCommand "edid-custom" { } ''
-      mkdir -p "$out/lib/firmware/edid"
-      base64 -d > "$out/lib/firmware/edid/SP8vrr120.bin" <<'EOF'
-      AP///////wAw5LEGoSQYAAAfAQSlGxJ4A+9wp1FMqCYOT1MAAAABAQEBAQEBAQEBAQEBAQEBAAAA
-      /QAeePDwSAEKICAgICAgAAAA/gBMR0RfTVAxLjBfCiAgAAAA/gBMUDEyOVdUMjEyMTY2AQEBAQEB
-      AQEBAQEBAQEBAQEBAQdwEy4AAAMBFH8VAQg/C08AB4AfAH8HTwBBAAcAAwEUfxUBCD8LTwAHgB8A
-      fwcfCEEABwDFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkA==
-      EOF
-    '')
-  ];
 
   # Declare both to override base config for iso
   networking.wireless.enable = false;
