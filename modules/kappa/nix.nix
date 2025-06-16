@@ -9,7 +9,7 @@
 
   nixpkgs ={
     config.allowUnfree = true;
-    overlays = [ (import ../../modules/kappa/gnome/overlay-osk.nix) ];
+    overlays = [ (import ./gnome/overlay-osk.nix) ];
   };
 
 }
