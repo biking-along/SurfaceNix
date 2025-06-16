@@ -51,7 +51,7 @@
       {
         #lockAll = false;
         settings."org/gnome/shell" = {
-          enabled-extensions = [ "iwanders-gnome-enhanced-osk-extension" ];
+          enabled-extensions = [ "iwanders-gnome-enhanced-osk-extension" "tray-icons-reloaded" ];
         };
       }
 
