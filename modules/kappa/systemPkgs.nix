@@ -17,5 +17,6 @@
     bitwarden-desktop
     jellyfin-media-player
     youtube-music
+    vesktop
   ];
 }
