@@ -108,7 +108,7 @@
       xorg.xwininfo
       thunderbird
       firefox
-      gnome-shell-extension-tray-icons-reloaded
+      gnomeExtensions.tray-icons-reloaded
     ];
 
     services.xserver.excludePackages = [ pkgs.xterm ];
