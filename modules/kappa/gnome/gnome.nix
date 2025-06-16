@@ -33,7 +33,7 @@
       {
         #lockAll = false;
         settings."org/gnome/shell" = {
-          enabled-extensions = [ "iwanders-gnome-enhanced-osk-extension" "tray-icons-reloaded" "blur-my-shell" ];
+          enabled-extensions = [ "iwanders-gnome-enhanced-osk-extension" "gnomeExtensions.tray-icons-reloaded" "gnomeExtensions.blur-my-shell" ];
         };
       }
 
