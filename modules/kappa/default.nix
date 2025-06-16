@@ -6,6 +6,5 @@
     ./hardware
     ./nix.nix
     ./systemPkgs.nix
-    .
   ];
 }
