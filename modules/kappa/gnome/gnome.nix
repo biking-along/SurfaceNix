@@ -9,7 +9,7 @@
     # Configure keymap in X11
     services.xserver = {
       enable = true;
-      layout = "us";
+      xkb.layout = "us";
     };
 
     # Display manager settings
