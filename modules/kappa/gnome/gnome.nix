@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
 
-  imports = [ ./gnome-osk.nix ];
+  # imports = [ ./gnome-osk.nix ];
 
   options = { };
 
