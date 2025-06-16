@@ -6,18 +6,18 @@
     ../../modules/kappa/gnome/gnome.nix
     ../../modules/kappa/cachix/cachix.nix
     ../../modules/kappa/envVars.nix
-    ../../modules/kappa/sp8Edid.nix
-    ../../modules/kappa/touchscreen.nix
-    ../../modules/kappa/audio.nix
+    ../../modules/kappa/hardware/sp8Edid.nix
+    ../../modules/kappa/hardware/touchscreen.nix
+    ../../modules/kappa/hardware/audio.nix
     ../../modules/kappa/nix.nix
     ../../modules/kappa/systemPkgs.nix
     ../../modules/shared/hideDesktopEntry.nix
     ../../modules/shared/nh.nix
     ../../modules/shared/git.nix
+    ../../modules/shared/disk.nix
     ../../modules/shared/timeZone.nix
   ];
 
-  boot.tmp.cleanOnBoot = true;
   hardware.enableAllFirmware = true;
 
   users.users.rw = {
