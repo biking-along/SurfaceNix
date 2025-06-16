@@ -33,7 +33,7 @@
       {
         #lockAll = false;
         settings."org/gnome/shell" = {
-          enabled-extensions = [ "iwanders-gnome-enhanced-osk-extension" "tray-icons-reloaded" ];
+          enabled-extensions = [ "iwanders-gnome-enhanced-osk-extension" "tray-icons-reloaded" "blur-my-shell" ];
         };
       }
 
@@ -84,6 +84,7 @@
       nautilus
       xorg.xwininfo
       gnomeExtensions.tray-icons-reloaded
+      gnomeExtensions.blur-my-shell
     ];
 
     services.xserver.excludePackages = [ pkgs.xterm ];
