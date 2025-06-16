@@ -35,7 +35,6 @@
   networking.networkmanager.enable = lib.mkDefault false;
 
   hardware.microsoft-surface.kernelVersion = "stable";
-  microsoft-surface.ipts.enable = true;
 
   # Disable the problematic suspend kernel module, it makes waking up
   # impossible after closing the cover.
