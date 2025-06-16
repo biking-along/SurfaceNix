@@ -24,16 +24,8 @@
     programs.dconf.profiles.gdm.databases = [
       {
         #lockAll = false;
-        settings."org/gnome/shell/extensions/enhancedosk" = {
-          show-statusbar-icon = true;
-          locked = true;
-        };
-      }
-
-      {
-        #lockAll = false;
         settings."org/gnome/shell" = {
-          enabled-extensions = [ "iwanders-gnome-enhanced-osk-extension" "gnomeExtensions.tray-icons-reloaded" "gnomeExtensions.blur-my-shell" ];
+          enabled-extensions = [ "${pkgs.gnomeExtensions.tray-icons-reloaded}" "${pkgs.gnomeExtensions.blur-my-shell}" ];
         };
       }
 
