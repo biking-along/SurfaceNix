@@ -1,41 +1,23 @@
 { config, pkgs, ... }: {
 
-  # https://github.com/fthx/no-overview/tree/main
-  # is also helpful to ensure we end up on a desktop instead of the launcher.
-  # Forked to https://github.com/iwanders/gnome-no-overview-extension
-  # Currently installed through the gnome extension system.
-
   imports = [ ./gnome-osk.nix ];
 
   options = { };
 
   config = {
 
-    # Surface related stuff.
-    services.iptsd = {
-      enable = true;
-      config = {
-        Touchscreen.DisableOnPalm = true;
-        Touchscreen.DisableOnStylus = true;
-      };
-    };
-
-    services.pulseaudio.enable = false;
-    security.rtkit.enable = true;
-    services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-    # https://github.com/NixOS/nixpkgs/blob/4ecab3273592f27479a583fb6d975d4aba3486fe/nixos/modules/services/x11/desktop-managers/gnome.nix#L459
-
     # Configure keymap in X11
-    services.xserver.xkb.layout = "us";
-    # services.xserver.xkbOptions = "eurosign:e,caps:escape";
-    services.xserver.enable = true;
-    services.displayManager.gdm.enable = true;
-    services.displayManager.gdm.autoSuspend = false;
+    services.xserver = {
+      enable = true;
+      layout = "us";
+    };
+
+    # Display manager settings
+    services.displayManager.gdm = {
+      enable = true;
+      autoSuspend = true;
+      wayland = true;
+    };
 
     # This block is here to ensure we get GDM with the custom on screen keyboard extension
     # in the settings I want.
@@ -67,9 +49,6 @@
 
     services.gnome.core-apps.enable = false;
 
-    # well, that (utilities false) still pulls in orca, with speech synthesis, for many megabytes.
-    # https://github.com/NixOS/nixpkgs/blob/4ecab3273592f27479a583fb6d975d4aba3486fe/nixos/modules/services/x11/desktop-managers/gnome.nix#L459
-    # https://discourse.nixos.org/t/howto-disable-most-gnome-default-applications-and-what-they-are/13505
     environment.gnome.excludePackages = with pkgs; [
       baobab # disk usage analyzer
       epiphany # web browser
@@ -103,11 +82,7 @@
       gnome-system-monitor
       gnome-disk-utility
       nautilus
-      vlc
-      gimp
       xorg.xwininfo
-      thunderbird
-      firefox
       gnomeExtensions.tray-icons-reloaded
     ];
 

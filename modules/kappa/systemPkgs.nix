@@ -18,5 +18,9 @@
     jellyfin-media-player
     youtube-music
     vesktop
+    vlc
+    thunderbird
+    firefox
+    gimp
   ];
 }

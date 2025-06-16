@@ -7,6 +7,8 @@
     ../../modules/kappa/cachix/cachix.nix
     ../../modules/kappa/envVars.nix
     ../../modules/kappa/sp8Edid.nix
+    ../../modules/kappa/touchscreen.nix
+    ../../modules/kappa/audio.nix
     ../../modules/kappa/nix.nix
     ../../modules/kappa/systemPkgs.nix
     ../../modules/shared/hideDesktopEntry.nix
