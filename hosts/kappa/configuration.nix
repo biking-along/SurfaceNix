@@ -14,11 +14,8 @@
     ../../modules/shared/hideDesktopEntry.nix
     ../../modules/shared/nh.nix
     ../../modules/shared/git.nix
+    ../../modules/shared/timeZone.nix
   ];
-
-  systemd.coredump.enable = true;
-
-  time.timeZone = "America/Chicago";
 
   boot.tmp.cleanOnBoot = true;
   hardware.enableAllFirmware = true;
