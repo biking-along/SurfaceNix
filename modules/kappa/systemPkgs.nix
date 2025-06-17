@@ -22,5 +22,6 @@
     thunderbird
     firefox
     gimp
+    foliate
   ];
 }
