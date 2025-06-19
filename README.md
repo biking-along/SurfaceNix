@@ -1,8 +1,8 @@
 # NixOS 
 
 This is a flake for my desktop and laptop/tablet; Gamma and Kappa.
--Gamma is a x86-64 desktop gaming pc with and Intel CPU and an AMD GPU. 
--Kappa is a Microsoft Surface Pro 8. 
+Gamma is a x86-64 desktop gaming pc with and Intel CPU and an AMD GPU. 
+Kappa is a Microsoft Surface Pro 8. 
 The kappa configs are originally forked from [IWander's](https://github.com/iwanders/nixos-surface) Surface Pro 9 config.
 
 ## Useful links;
